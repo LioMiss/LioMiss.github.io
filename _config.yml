@@ -58,10 +58,6 @@ kramdown:
       start_line: 1
 
 
-
-# Disqus settings
-disqus_username: hux
-
 # Netease settings
 netease_comment: false
 
@@ -70,12 +66,6 @@ netease_comment: false
 # Analytics settings
 # Baidu Analytics 
 # ba_track_id: [your track id]
-
-# Google Analytics
-ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
-ga_domain: liomiss.github.io
-
-
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
@@ -107,31 +97,13 @@ friends: [
     #     title: "Su",
     #     href: "http://su.gallery/"
     # },{
-        title: "乱序",
-        href: "http://mida.re/"
+        title: "雨松MOMO",
+        href: "https://www.xuanyusong.com/"
     },{
-        title: "Sherry Wu",
-        href: "https://xuechundesign.github.io"
+        title: "云风的Blog",
+        href: "https://blog.codingnow.com/"
     },{
-        title: "Luke 的自留地",
-        href: "http://hmqk1995.github.io"
-    },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
-    },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
-    },{
-        title: "JiyinYiyong",
-        href: "http://tiye.me/"
-    },{
-        title: "David's Game",
-        href: "https://www.ruoyaowu.com/"
-    },{
-        title: "DHong Say",
-        href: "http://dhong.co"
-    },{
-        title: "尹峰以为",
-        href: "http://ingf.github.io/"
+        title: "Keijiro",
+        href: "https://www.keijiro.tokyo/"
     }
 ]
