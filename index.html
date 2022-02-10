@@ -22,13 +22,13 @@ description: "我见青山多妩媚 料青山见我应如是"
         </div>
     </a>
     <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} <!--阅读<span id="busuanzi_value_page_pv"></span>>
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} <!--阅读<span id="busuanzi_value_page_pv"></span>-->
     </p>
 </div>
 <hr>
 {% endfor %}
 
-<!-- Pager -->
+<!--Pager -->
 {% if paginator.total_pages > 1 %}
 <ul class="pager">
     {% if paginator.previous_page %}
