@@ -93,6 +93,6 @@ private IntPtr AllocateAlignedBuffer(byte[] data)
 这样也可以，就是绕，仿佛绕这一圈就是为了用Addressable的更新流程，反倒不如自己做，所以才有了最后的解决方案，一切回归原始。
 
 ### 将SoundBank下载到额外目录
-最后这种方案原理是最简单的，就是我们把它的资源文件都下载到额外目录（Application.persistentDataPath）去
+最后这种方案原理是最简单的，但是需要写不少代码，就是把它的资源文件都下载到额外目录（Application.persistentDataPath），通过对比md5，决定要下载哪些文件，所以还要在打包时生成一份md5列表，总的来说需要自制一套热更新的流程，但也因为是自制的，所以适配性更强，可以满足任何需求。
 
-
+最后记得在代码中调用AkSoundEngine.AddBasePath添加额外目录到wwise。
