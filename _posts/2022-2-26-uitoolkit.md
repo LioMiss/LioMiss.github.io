@@ -73,3 +73,8 @@ p.s 熟悉安卓开发的对这个UE一定不陌生，这简直就是安卓早�
 5.在场景中新建一个GameObject，命名为UI，添加UIDocument组件。将前面创建好的配置文件PanelSetting和UXML文件拖上去。
 
 现在，不出意外的话在Game视图已经可以看到UI了。可以去UXML里修改Label的一些参数看看UI上对应的变化。
+
+### 参考资料
+UI系统对比 https://docs.unity3d.com/cn/2021.2/Manual/UI-system-compare.html  
+UnitePPT https://www.slideshare.net/unity3d/built-for-performance-the-uielements-renderer-unite-copenhagen-2019  
+UIBuilder https://blog.csdn.net/qq_43500611/article/details/103063434?spm=1001.2101.3001.6650.9&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-9.pc_relevant_paycolumn_v3&utm_relevant_index=11
