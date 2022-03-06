@@ -46,6 +46,58 @@ tags:
 |GameObject	|GameObject
 |子UI：UIXXXX	|UIXXXX
 
+如需添加组件类型，只需要在代码上加入对应的名字即可：
+```c#
+   // 默认导出组件
+    static List<string> componentNames = new List<string>() {
+        "NUIListView",
+        "NUIListItem",
+        "NCommonPanel",
+        "RectTransform",
+        "Animator",
+        "UITweenPosition",
+        "UITweenSlider",
+        "EventTrigger",
+        "InputField",
+        "Dropdown",
+        "Slider",
+        "ToggleGroup",
+        "Toggle",
+        "Button",
+        "Image",
+        "RawImage",
+        "Text",
+    };
+
+    // 通过名称指定导出的组件字典
+    static Dictionary<string, string> componentFieldNames = new Dictionary<string, string>() {
+        { "ListView","NUIListView"},
+        { "NUIListView","NUIListView"},
+        { "ListItem","NUIListItem"},
+        { "NUIListItem","NUIListItem"},
+        { "TweenPosition","UITweenPosition"},
+        { "TweenSlider","UITweenSlider"},
+        { "InputField", "InputField"},
+        { "Dropdown", "Dropdown"},
+        { "Slider","Slider" },
+        { "ToggleGroup","ToggleGroup" },
+        { "Toggle","Toggle" },
+        { "Button","Button" },
+        { "Btn","Button" },
+        { "RawImage", "RawImage" },
+        { "Image","Image" },
+        { "Text","Text" },
+        { "EventTrigger","EventTrigger" },
+        { "Rect","RectTransform" },
+        { "RectTransform","RectTransform" },
+        { "Transform","Transform" },
+        { "GameObject","GameObject" },
+        { "Animation", "Animation" },
+        { "Animator", "Animator" }
+    };
+```
+
 ### 总结
 通过一定的命名规则导出绑定代码，在使用者熟练掌握这些规则后，在完成prefab基本结构的创建后，就可以放心的把它交给UI，以及动效人员，只需要双方对这个规则有一定了解并达成共识，就可以保证虽然节点的结构改变，但只需要重新导出一下代码就能使代码正常工作。这大大的提高了多人协作的效率。  
-同时，对于程序员本身来说，可以省去很多的重复性或者反复的劳动，让我们心情更加舒畅的同时，也有更多的精力放在更有趣的事情上。
+同时，对于程序员本身来说，可以省去很多的重复性或者反复的劳动，让我们心情更加舒畅的同时，也有更多的精力放在更有趣的事情上。  
+代码仓库：https://github.com/LioMiss/UGUIBinderGenerator
