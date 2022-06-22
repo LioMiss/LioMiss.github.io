@@ -38,7 +38,7 @@ EntityManager提供了从单个实体以及NativeArray中的所有实体中删�
 迭代具有匹配的组件集的所有实体是ECS体系结构的核心。请参见[Accessing entity data](https://docs.unity3d.com/Packages/com.unity.entities@0.50/manual/chunk_iteration.html)
 
 ### Editor中的实体
-在Editor中，[![X22xN6.png](https://s1.ax1x.com/2022/06/13/X22xN6.png)](https://imgtu.com/i/X22xN6)图标表示实体。可以在[Entities windows and Inspectors](https://docs.unity3d.com/Packages/com.unity.entities@0.50/manual/editor-workflows.html)中进行查看
+在Editor中，![X22xN6.png](https://s1.ax1x.com/2022/06/13/X22xN6.png)图标表示实体。可以在[Entities windows and Inspectors](https://docs.unity3d.com/Packages/com.unity.entities@0.50/manual/editor-workflows.html)中进行查看
 
 ### 访问实体数据
 在使用ECS系统时，迭代数据是最常见的任务之一，ECS系统通常处理一组实体，从一个或多个组件读取数据，执行计算，将结果写入另一个组件。迭代实体和组件最有效的方法是在可并行Job中按顺序处理组件，这有效利用了所有可用核心，同时数据存储的位置可有效提高CPU的缓存命中。  
@@ -55,3 +55,32 @@ IJobForEach
 IJobForEachWithEntity  
 ComponentSystem  
 这些类型正在逐步淘汰。
+
+### 使用EntityQuery查询数据
+要读取或写入数据，必须先找到要更改的数据。ECS中的数据存储在组件中，ECS根据所属实体的原型在内存中分组。您可以使用EntityQuery查询ECS数据，该数据只包含给定算法或流程所需的特定数据。  
+您可以使用EntityQuery执行以下操作：  
+运行Job以处理选定的实体和组件  
+获取包含所有选定实体的NativeArray  
+获取所选组件的NativeArray（按组件类型）  
+EntityQuery返回的实体和组件数组保证是“并行的”，即相同的索引值始终应用于任何数组中的相同实体。  
+
+### World
+一个世界（World）将实体组织成孤立的组，一个世界拥有一个EntityManager和一组Systems，在一个世界中创建的实体只在该世界中生效，但可以通过EntityManager.MoveEntitiesFrom转移到其他世界。系统只能访问同一世界中的实体，您可以创建任意多个世界。  
+默认情况下，Unity在应用程序启动时创建默认世界，unity实例化所有系统（继承自ComponentSystemBase）并将它们添加到此默认世界，Unity还可以在编辑器中创建专门的世界。比如：它为仅在编辑器中而不是在Playmode中运行的实体和系统创建了一个编辑器世界，还创建了用于管理游戏对象到实体的转换的转换世界。有关可以创建的不同类型世界的示例，请参见[WorldFlags](https://docs.unity3d.com/Packages/com.unity.entities@0.50/api/Unity.Entities.WorldFlags.html)  
+使用[World.DefaultGameObjectInjectionWorld](https://docs.unity3d.com/Packages/com.unity.entities@0.50/api/Unity.Entities.World.DefaultGameObjectInjectionWorld.html#Unity_Entities_World_DefaultGameObjectInjectionWorld)访问默认世界。
+
+#### 管理系统
+世界对象提供了创建、访问和从世界中删除系统的方法。大多数情况下，可以使用GetOrCreateSystem来获取系统实例。
+
+#### 时间
+系统时间属性的值由系统所在的世界控制，默认情况下，Unity为每个世界创建一个TimeData实体，该实体由UpdateWorldTimeSystem实例更新，以反映上一帧以来经过的时间，系统的时间属性是当前世界时间的别名。  
+FixedStepSimulationSystemGroup对时间的处理与其他系统组不同，以固定间隔更新，如果固定间隔是一帧中很小的一部分，则可能会在每帧更新多次。  
+如果需要更好地控制世界中的时间，可以直接使用World.SetTime。你可以用PushTime来更改世界时间，也可以用PopTime来返回到上一个时间。  
+
+#### 自定义初始化
+要在启动时手动初始化游戏，可以实现ICustomBootstrap接口，Unity使用默认世界时会调用这个接口，通过这种方式可以修改或者完全替换系统创建和初始化的过程。  
+你还可以通过定义一下全局符号完全禁用默认世界的创建：  
+UNITY_DISABLE_AUTOMATIC_SYSTEM_BOOTSTRAP_RUNTIME_WORLD,禁用默认运行时世界的生成  
+UNITY_DISABLE_AUTOMATIC_SYSTEM_BOOTSTRAP_EDITOR_WORLD，禁用默认编辑器世界的生成  
+UNITY_DISABLE_AUTOMATIC_SYSTEM_BOOTSTRAP，同时禁用以上两种世界的生成  
+然后，您的代码负责创建任何需要的世界，以及实例化和更新系统，您可以使用Unity 可编程PlayerLoop修改普通的Unity播放器循环方式，以便在需要时更新系统。  
