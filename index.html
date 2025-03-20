@@ -22,7 +22,11 @@ description: "我见青山多妩媚 料青山见我应如是"
         </div>
     </a>
     <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} <!--阅读<span id="busuanzi_value_page_pv"></span>-->
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} 
+        <span id="<%=post.title%>" class="leancloud_visitors" data-flag-title="Your Article Title">
+            <em class="post-meta-item-text">阅读量 </em>
+            <i class="leancloud-visitors-count">1000000</i>
+        </span>
     </p>
 </div>
 <hr>
