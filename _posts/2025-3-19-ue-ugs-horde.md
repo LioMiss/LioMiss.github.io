@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "UE5世界分区"
+title: "UE5 Horde"
 subtitle: ''
 author: "LioMiss"
 header-style: text
@@ -63,4 +63,4 @@ Body中输入json，如：
 4.启动UGS
 在虚幻编辑器中启动UGS，可以添加Good或Bad标记，可以显示打好的标签。实现类似官方文档中的效果：
 
-[![ugs界面](https://d1iv7db44yhgxn.cloudfront.net/documentation/images/f13f0559-6a76-4c3a-816b-b317607d0719/ugs-changelist-context-menu.png)](https://d1iv7db44yhgxn.cloudfront.net/documentation/images/f13f0559-6a76-4c3a-816b-b317607d0719/ugs-changelist-context-menu.png)
+[![ugs界面](https://d1iv7db44yhgxn.cloudfront.net/documentation/images/f13f0559-6a76-4c3a-816b-b317607d0719/ugs-changelist-context-menu.png)](https://d1iv7db44yhgxn.cloudfront.net/documentation/images/3a25b4d4-5075-4484-84fe-aa20f378532e/ugs-pcb-sync-pcbs.png)
