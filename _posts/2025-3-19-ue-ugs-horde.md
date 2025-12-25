@@ -64,3 +64,16 @@ Body中输入json，如：
 在虚幻编辑器中启动UGS，可以添加Good或Bad标记，可以显示打好的标签。实现类似官方文档中的效果：
 
 [![ugs界面](https://d1iv7db44yhgxn.cloudfront.net/documentation/images/f13f0559-6a76-4c3a-816b-b317607d0719/ugs-changelist-context-menu.png)](https://d1iv7db44yhgxn.cloudfront.net/documentation/images/3a25b4d4-5075-4484-84fe-aa20f378532e/ugs-pcb-sync-pcbs.png)
+
+### Horde Agent配置分布式编译CPU使用率
+新版Horde（5.7版本），支持在Agent端配置CPU使用率，方法是修改：C:\ProgramData\Epic\Horde\Agent路径下的agent.json文件，添加以下内容：
+```json
+{
+	"Horde": {
+		"name": "Builder_test",
+		"CpuCount": 1,
+		"CpuMultiplier": 1
+	}
+}
+```
+即可限制CPU使用率，防止编译时占用过多CPU资源造成卡顿。（最主要的是，被发现卡之后大家就都不开Agent了......）
